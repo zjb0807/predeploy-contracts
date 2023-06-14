@@ -27,6 +27,7 @@ jobs:
           yarn run generate-bytecode
           cd contracts
           version=$(cat package.json| jq .version)
+          a=$(yarn npm info '@acala-network/contracts' --json | jq -er ".versions|any(. == $version)")
           if [ $(yarn npm info '@acala-network/contracts' --json | jq -er ".versions|any(. == $version)") == false ]
           then
               # prepare
