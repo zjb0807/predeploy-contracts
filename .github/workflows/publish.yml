@@ -28,8 +28,6 @@ jobs:
           version=$(cat contracts/package.json| jq .version)
           if [ $(yarn npm info '@acala-network/contracts' --json | jq -er ".versions|any(. == $version)") == false ]
           then
-              # prepare
-              yarn run prepare
               # publish
               yarn npm publish --access=public
           fi
